@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Noctelens | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+
+        <p class="admin-brand" href="index.html">
+            <span class="admin-mark">
+                <img
+                    src="images/logo.jpeg"
+                    style="height: 40px; width: 40px;"
+                    alt="Noctelens logo"
+                >
+            </span>
+            NOCTELENS
+        </p>
+
+        <div class="header-admin">
+            <span id="adminEmail"></span>
+            <button id="logoutBtn" class="secondary">
+                Log out
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- Main Dashboard -->
+    <main class="admin-main">
+
+        <!-- Dashboard Introduction -->
+        <div class="top">
+
+            <div>
+                <small>NOCTELENS / PRIVATE DASHBOARD</small>
+
+                <h1>Project manager</h1>
+
+                <p>
+                    Add new work, update project details, publish or archive
+                    entries, and permanently delete anything no longer needed.
+                </p>
+            </div>
+
+            <button id="newBtn" class="primary">
+                ＋ Add project
+            </button>
+
+        </div>
+
+
+        <!-- Project Statistics -->
+        <section class="stats">
+
+            <div>
+                <b id="total">0</b>
+                <span>All projects</span>
+            </div>
+
+            <div>
+                <b id="published">0</b>
+                <span>Published</span>
+            </div>
+
+            <div>
+                <b id="archived">0</b>
+                <span>Archived</span>
+            </div>
+
+        </section>
+
+
+        <!-- Project Filters -->
+        <div class="toolbar">
+
+            <button class="tab active" data-status="all">
+                All
+            </button>
+
+            <button class="tab" data-status="published">
+                Published
+            </button>
+
+            <button class="tab" data-status="archived">
+                Archived
+            </button>
+
+        </div>
+
+
+        <!-- Project List -->
+        <div id="list"></div>
+
+    </main>
+
+
+    <!-- Add / Edit Project Modal -->
+    <div class="modal" id="modal">
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                id="close"
+                type="button"
+            >
+                ×
+            </button>
+
+            <small>PROJECT DETAILS</small>
+
+            <h2 id="formTitle">Add project</h2>
+
+
+            <!-- Project Form -->
+            <form id="form">
+
+                <input type="hidden" id="id">
+
+
+                <!-- Project Title -->
+                <label>
+                    Project title
+
+                    <input
+                        id="title"
+                        placeholder="Project name"
+                        required
+                    >
+                </label>
+
+
+                <!-- Project Category -->
+                <label>
+                    Category
+
+                    <select id="category">
+                        <option value="web">
+                            Website development
+                        </option>
+
+                        <option value="video">
+                            Video editing &amp; videography
+                        </option>
+                    </select>
+                </label>
+
+
+                <!-- Project Description -->
+                <label>
+                    Short description
+
+                    <textarea
+                        id="description"
+                        placeholder="A short summary of the project"
+                    ></textarea>
+                </label>
+
+
+                <!-- Project Media Upload -->
+                <label>
+                    Project image or video
+
+                    <input
+                        id="media"
+                        type="file"
+                        accept="image/*,video/*"
+                    >
+
+                    <small class="field-note">
+                        Optional. Upload a new file to replace the current preview.
+                    </small>
+
+                    <span id="currentMedia" class="current-media">
+                        No media uploaded
+                    </span>
+                </label>
+
+
+                <!-- Project URL -->
+                <label>
+                    Project URL
+
+                    <input
+                        id="url"
+                        type="url"
+                        placeholder="https://..."
+                    >
+                </label>
+
+
+                <!-- Role / Contribution -->
+                <label>
+                    Role / contribution
+
+                    <input
+                        id="role"
+                        placeholder="Optional"
+                    >
+                </label>
+
+
+                <!-- Project Challenge -->
+                <label>
+                    Challenge
+
+                    <textarea
+                        id="challenge"
+                        placeholder="Optional"
+                    ></textarea>
+                </label>
+
+
+                <!-- Project Solution -->
+                <label>
+                    Solution
+
+                    <textarea
+                        id="solution"
+                        placeholder="Optional"
+                    ></textarea>
+                </label>
+
+
+                <!-- Project Results -->
+                <label>
+                    Results
+
+                    <textarea
+                        id="results"
+                        placeholder="Optional"
+                    ></textarea>
+                </label>
+
+
+                <!-- Tools Used -->
+                <label>
+                    Tools used
+
+                    <input
+                        id="tools"
+                        placeholder="e.g. HTML, CSS, JavaScript, CapCut"
+                    >
+                </label>
+
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary"
+                        id="cancel"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        class="primary"
+                        type="submit"
+                    >
+                        Save project
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript Libraries and Files -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-config.js"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
